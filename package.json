@@ -1,0 +1,29 @@
+{
+  "name": "widgets",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "BUILD=1 webpack -p --config webpack.config.js --progress --profile --colors --display-chunks --display-modules",
+    "eslint": "eslint src webpack.config.js"
+  },
+  "author": "Ilia Lovriakov",
+  "license": "MIT",
+  "dependencies": {
+    "whatwg-fetch": "^1.0.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.3.7",
+    "css-loader": "^0.23.1",
+    "node-sass": "^3.8.0",
+    "postcss-loader": "^0.9.1",
+    "query-string": "^4.2.2",
+    "sass-loader": "^4.0.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
