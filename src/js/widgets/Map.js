@@ -39,8 +39,6 @@ function MapWidget(params) {
   });
   preloader.start();
 
-  window.preloader = preloader;
-
   // load google maps
   gmapsLoader({
     apiKey: params.apiKey,
@@ -48,7 +46,7 @@ function MapWidget(params) {
     callback: function () {
       console.log('loaded!');
       // remove preloader
-      // preloader.stop();
+      preloader.stop();
       // run all code
       var map = new google.maps.Map(mapHolder, {
         center: {lat: -34.397, lng: 150.644},
