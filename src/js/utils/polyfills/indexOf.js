@@ -1,6 +1,6 @@
 // add array index of for old browsers (IE<9)
 
-function poifill () {
+function polyfill () {
   if (!Array.prototype.indexOf) {
     Array.prototype.indexOf = function(obj, start) {
       var i, j;
@@ -17,4 +17,4 @@ function poifill () {
   }
 }
 
-module.exports = poifill
+module.exports = polyfill;

@@ -3,11 +3,13 @@
 
 'use strict';
 
-var indefOfPolifill = require('./polifils/indexOf'),
+var indexOfPolyfill = require('./polyfills/indexOf'),
+  forEachPolyfill = require('./polyfills/indexOf'),
   queryString = require('./queryStringParser');
 
 // add array index of for old browsers (IE<9)
-indefOfPolifill();
+indexOfPolyfill();
+forEachPolyfill();
 
 function widgetInitializer(params) {
   var matchingExpression = params.expression ||  /app\.js/,
