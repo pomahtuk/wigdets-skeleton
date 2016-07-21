@@ -12,11 +12,12 @@
   "author": "Ilia Lovriakov",
   "license": "MIT",
   "dependencies": {
-    "whatwg-fetch": "^1.0.0"
+    "superagent": "^2.1.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.7",
     "css-loader": "^0.23.1",
+    "file-loader": "^0.9.0",
     "node-sass": "^3.8.0",
     "postcss-loader": "^0.9.1",
     "query-string": "^4.2.2",

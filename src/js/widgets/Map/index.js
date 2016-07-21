@@ -2,10 +2,11 @@
 /*global require, module*/
 'use strict';
 
-var styles = require('../../css/widgets/map.css'),
-  gmapsLoader = require('./helpers/gmapsApiLoader'),
-  Preloader = require('../components/preloader');
-
+var styles = require('../../../css/widgets/map.css'),
+  gmapsLoader = require('../helpers/gmapsApiLoader'),
+  ApiClient = require('../../ApiClient'),
+  CartoEngine = require('./CartoEngine'),
+  Preloader = require('../../components/preloader');
 
 /**
  * MapWidget - description
@@ -44,7 +45,6 @@ function MapWidget(params) {
     apiKey: params.apiKey,
     container: container,
     callback: function () {
-      console.log('loaded!');
       // remove preloader
       preloader.stop();
       // run all code
