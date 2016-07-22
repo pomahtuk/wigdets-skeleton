@@ -12,7 +12,9 @@
   "author": "Ilia Lovriakov",
   "license": "MIT",
   "dependencies": {
-    "superagent": "^2.1.0"
+    "es6-promise": "^3.2.1",
+    "superagent": "^2.1.0",
+    "superagent-legacyiesupport": "^1.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.7",

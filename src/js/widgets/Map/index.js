@@ -4,8 +4,8 @@
 
 var styles = require('../../../css/widgets/map.css'),
   gmapsLoader = require('../helpers/gmapsApiLoader'),
-  ApiClient = require('../../ApiClient'),
-  CartoEngine = require('./CartoEngine'),
+  ApiClient = require('../../api'),
+  CartoEngine = require('./carto'),
   Preloader = require('../../components/preloader');
 
 /**
@@ -17,6 +17,8 @@ var styles = require('../../../css/widgets/map.css'),
 function MapWidget(params) {
   var container = params.container,
     mapHolder = document.createElement('div'),
+    apiClinet = new ApiClient(),
+    carto,
     logoContainer,
     preloader;
 
@@ -34,6 +36,9 @@ function MapWidget(params) {
   mapHolder.className = styles['maps-container'];
   container.appendChild(mapHolder);
 
+  // create carto engine instance
+  carto = new CartoEngine(mapHolder);
+
   // set preloader
   preloader = new Preloader({
     container: container
@@ -45,14 +50,19 @@ function MapWidget(params) {
     apiKey: params.apiKey,
     container: container,
     callback: function () {
-      // remove preloader
-      preloader.stop();
-      // run all code
-      var map = new google.maps.Map(mapHolder, {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 8,
-        disableDefaultUI: true
-      });
+      apiClinet.getCurrentAirpot()
+        .then(apiClinet.getCheapDestinations)
+        .then(function (airportsList) {
+          carto.initMapWithAirports({
+            preloader: preloader,
+            airportsList: airportsList
+          })
+        })
+        .then(undefined, function (error) {
+          console.log(error);
+          // stop preloader
+          // hide block / show unhappy face? // zomby rabbit?
+        });
     }
   });
 
