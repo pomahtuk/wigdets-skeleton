@@ -14,5 +14,77 @@
   top: 10px;
   left: 10px;
   z-index: 999;
-  outline: 1px solid red;
+  outline: 2px solid #54a6e4;
+}
+
+.marker {
+  background: #54a6e4;
+  height: 18px;
+  border: 2px solid white;
+  border-radius: 3px;
+  white-space: nowrap;
+  padding: 5px 0px 1px 0px;
+}
+
+.marker a,
+.marker a:visited,
+.marker a:hover {
+  color: white !important;
+  font-size: 14px !important;
+  font-family: Arial, sans-serif !important;
+  text-align: center;
+  padding: 5px 10px 5px 10px;
+  text-decoration: none !important;
+}
+
+.with-price:after,
+.from:after, {
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  top: 25px;
+  left: 50%;
+  margin-left: -7px;
+  content: '';
+  position: absolute;
+  border-top: 7px solid #1b95c8;
+}
+
+.marker:after {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  bottom: -10px;
+  left: 50%;
+  margin-left: -10px;
+  content: '';
+  position: absolute;
+  border-top: 10px solid #54a6e4;
+}
+
+.marker:before {
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 12px solid white;
+  bottom: -12px;
+  left: 50%;
+  margin-left: -12px;
+  content: '';
+  position: absolute;
+}
+
+.default {
+  background: #ff7e02;
+}
+
+.default a {
+  cursor: default !important;
+}
+
+.default:after {
+  border-top: 10px solid #ff7e02;
 }

@@ -1,5 +1,5 @@
 /*jslint browser: true, indent: 2, node: true*/
-/*global require, module*/
+/*global require, module, google */
 'use strict';
 
 /**
@@ -17,7 +17,9 @@ function gmapsApiLoader(settings) {
   gmapsScriptTag.onload = function () {
     // we are sure maps we loaded
     if (settings.callback) {
-      settings.callback();
+      google.maps.event.addDomListener(window, 'load', function () {
+        settings.callback();
+      });
     }
   };
 

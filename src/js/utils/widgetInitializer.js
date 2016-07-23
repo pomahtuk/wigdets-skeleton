@@ -6,12 +6,16 @@
 var indexOfPolyfill = require('./polyfills/indexOf'),
   forEachPolyfill = require('./polyfills/indexOf'),
   bindPolyfill = require('./polyfills/bind'),
+  filterPolyfill = require('./polyfills/filter'),
+  findPolyfill = require('./polyfills/filter'),
   queryString = require('./queryStringParser');
 
 // add array index of for old browsers (IE<9)
 indexOfPolyfill();
 forEachPolyfill();
 bindPolyfill();
+filterPolyfill();
+findPolyfill();
 
 function widgetInitializer(params) {
   var matchingExpression = params.expression ||  /app\.js/,

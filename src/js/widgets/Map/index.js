@@ -17,6 +17,8 @@ var styles = require('../../../css/widgets/map.css'),
 function MapWidget(params) {
   var container = params.container,
     mapHolder = document.createElement('div'),
+    baseUrl = params.baseUrl || 'http://kupibilet.ru/',
+    showLines = params.showLines || false,
     apiClinet = new ApiClient(),
     carto,
     logoContainer,
@@ -45,21 +47,28 @@ function MapWidget(params) {
   });
   preloader.start();
 
+  // test purpose only
+  function getTestAirports (response) {
+    return apiClinet.getCheapDestinations(response, true);
+  }
+
   // load google maps
   gmapsLoader({
     apiKey: params.apiKey,
     container: container,
     callback: function () {
-      apiClinet.getCurrentAirpot()
-        .then(apiClinet.getCheapDestinations)
-        .then(function (airportsList) {
+      apiClinet.getCurrentAirpot(true)
+        // .then(apiClinet.getCheapDestinations)
+        .then(getTestAirports)
+        .then(function (response) {
           carto.initMapWithAirports({
             preloader: preloader,
-            airportsList: airportsList
+            airportsList: response,
+            showLines: showLines
           })
         })
         .then(undefined, function (error) {
-          console.log(error);
+          console.error(error);
           // stop preloader
           // hide block / show unhappy face? // zomby rabbit?
         });

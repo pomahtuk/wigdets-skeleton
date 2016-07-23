@@ -5,7 +5,7 @@
 var styles = require('../css/common/reset.css'),
   widgetInitializer = require('./utils/widgetInitializer'),
   Widget = require('./widgets/Map'),
-  // TBD: implement propper sript matching
+  // TODO: implement propper sript matching
   matchingExpression = /app\.js/;
 
 widgetInitializer({
