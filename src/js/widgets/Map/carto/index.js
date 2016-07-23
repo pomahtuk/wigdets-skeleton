@@ -60,7 +60,7 @@ Carto.prototype.initMapWithAirports = function (options) {
       flightLines: flightLines,
       intervalMax: 1500,
       intervalMin: 500,
-      duration: 750
+      duration: 2000
     });
   }
 

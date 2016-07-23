@@ -53,13 +53,14 @@ var Lines = {
   animateLines: function (options) {
     var flightLines = options.flightLines,
       duration = options.duration || 750,
+      frameInterval = 100,
+      singleStep = 10,
+      stepsNumber = (duration / frameInterval) * singleStep,
       intervalMax = options.intervalMax || 1500,
       intervalMin = options.intervalMin || 500;
 
-    function animateCurrentPlane (currentPlaneLine, count, step, interval) {
+    function animateCurrentPlane (currentPlaneLine, count) {
       var count = count || 0,
-        step = step || 5,
-        interval = interval || 100,
         currentPlaneIcon = currentPlaneLine.get('icons')[0];
 
       // maje sure icon is visible
@@ -67,25 +68,26 @@ var Lines = {
       currentPlaneIcon.icon.strokeOpacity = 1;
 
       // if we done with animation
-      if (count >= 100) {
+      if (count >= stepsNumber) {
         // reset all attributes
         count = 0;
         currentPlaneIcon.offset = count + '%';
         currentPlaneIcon.icon.fillOpacity = 0;
         currentPlaneIcon.icon.strokeOpacity = 0;
         currentPlaneLine.set('icons', [currentPlaneIcon]);
+
         // animate next one
         animateFlightLine();
       } else {
         // increment counter
-        count += step;
+        count += singleStep;
         // move icon
         currentPlaneIcon.offset = count + '%';
         currentPlaneLine.set('icons', [currentPlaneIcon]);
         // do next animation tick
         setTimeout(function () {
           animateCurrentPlane(currentPlaneLine, count);
-        }, interval);
+        }, frameInterval);
       }
     }
 
