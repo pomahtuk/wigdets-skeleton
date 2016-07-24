@@ -54,8 +54,8 @@ var Lines = {
     var flightLines = options.flightLines,
       duration = options.duration || 750,
       frameInterval = 100,
-      singleStep = 10,
-      stepsNumber = (duration / frameInterval) * singleStep,
+      frameCount = 100,
+      stepSize = 100 / (duration / frameInterval),
       intervalMax = options.intervalMax || 1500,
       intervalMin = options.intervalMin || 500;
 
@@ -68,7 +68,7 @@ var Lines = {
       currentPlaneIcon.icon.strokeOpacity = 1;
 
       // if we done with animation
-      if (count >= stepsNumber) {
+      if (count >= frameCount) {
         // reset all attributes
         count = 0;
         currentPlaneIcon.offset = count + '%';
@@ -80,7 +80,7 @@ var Lines = {
         animateFlightLine();
       } else {
         // increment counter
-        count += singleStep;
+        count += stepSize;
         // move icon
         currentPlaneIcon.offset = count + '%';
         currentPlaneLine.set('icons', [currentPlaneIcon]);
